@@ -1,0 +1,25 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get", "post"]
+    },
+    {
+      "name": "timelineEntries",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "yb-hack",
+      "collectionName": "timelineEntry",
+      "sqlQuery": "SELECT * from c where child = {Query.child} order by timestamp asc",
+      "connectionStringSetting": "cosmosConnection"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
