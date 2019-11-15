@@ -5,15 +5,15 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["get", "post"]
+      "methods": ["post"]
     },
     {
-      "name": "timelineEntries",
+      "name": "entry",
       "type": "cosmosDB",
-      "direction": "in",
+      "direction": "out",
       "databaseName": "ipk-hack",
       "collectionName": "timelineEntry",
-      "sqlQuery": "SELECT * FROM c ORDER BY c.timestamp ASC",
+      "createIfNotExists": true,
       "connectionStringSetting": "cosmosConnection"
     },
     {

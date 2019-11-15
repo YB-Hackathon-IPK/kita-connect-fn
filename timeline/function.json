@@ -1,0 +1,25 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get"]
+    },
+    {
+      "name": "timelineEntries",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "ipk-hack",
+      "collectionName": "timelineEntry",
+      "sqlQuery": "SELECT * FROM c ORDER BY c.timestamp ASC",
+      "connectionStringSetting": "cosmosConnection"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
