@@ -1,0 +1,14 @@
+{
+  "azureFunctions.deploySubpath": "target/azure-functions/ybhack-ipk-nf/",
+  "azureFunctions.projectLanguage": "Java",
+  "azureFunctions.projectRuntime": "~2",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "package",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.configuration.updateBuildConfiguration": "interactive"
+}
