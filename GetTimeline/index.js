@@ -24,11 +24,20 @@ module.exports = async function(context, req) {
   let moment = require("moment");
   let date = moment(req.query.date, "YYYYMMDD");
   let startOfDay = date.startOf("day");
-  let endOfDay = date.endOf("day");
+  let endOfDay = moment(date).endOf('day');
 
-  let entries = context.bindings.timelineEntries.filter(
-    e => e.timestamp >= +startOfDay && e.timestamp <= +endOfDay
-  );
+  let entries = context.bindings.timelineEntries.filter(e => {
+    // console.log(`c.child = ${e.child}, q.child = ${req.query.child}`);
+    // console.log(
+    //   `c.timestamp = ${e.timestamp}, start = ${startOfDay.valueOf()}, end = ${endOfDay.valueOf()}`
+    // );
+
+    return (
+      e.child === req.query.child &&
+      e.timestamp >= +startOfDay &&
+      e.timestamp <= +endOfDay
+    );
+  });
 
   context.res = {
     status: 200,

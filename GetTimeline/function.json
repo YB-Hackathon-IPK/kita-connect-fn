@@ -11,9 +11,9 @@
       "name": "timelineEntries",
       "type": "cosmosDB",
       "direction": "in",
-      "databaseName": "yb-hack",
+      "databaseName": "ipk-hack",
       "collectionName": "timelineEntry",
-      "sqlQuery": "SELECT * from c where child = {Query.child} order by timestamp asc",
+      "sqlQuery": "SELECT * FROM c ORDER BY c.timestamp ASC",
       "connectionStringSetting": "cosmosConnection"
     },
     {
