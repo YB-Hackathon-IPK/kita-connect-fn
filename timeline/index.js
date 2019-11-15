@@ -1,10 +1,10 @@
 module.exports = async function(context, req) {
-  if (!req.query.child || !req.query.date) {
+  if (!req.query.child) {
     context.res = {
       status: 400,
       body: {
         status: "err",
-        message: "you need to provide ?child and ?date"
+        message: "you need to provide ?child"
       }
     };
     return;
@@ -21,10 +21,10 @@ module.exports = async function(context, req) {
     return;
   }
 
-  let moment = require("moment");
-  let date = moment(req.query.date, "YYYYMMDD");
-  let startOfDay = date.startOf("day");
-  let endOfDay = moment(date).endOf('day');
+  // let moment = require("moment");
+  // let date = moment(req.query.date, "YYYYMMDD");
+  // let startOfDay = date.startOf("day");
+  // let endOfDay = moment(date).endOf('day');
 
   let entries = context.bindings.timelineEntries.filter(e => {
     // console.log(`c.child = ${e.child}, q.child = ${req.query.child}`);
@@ -33,9 +33,10 @@ module.exports = async function(context, req) {
     // );
 
     return (
-      e.child === req.query.child &&
-      e.timestamp >= +startOfDay &&
-      e.timestamp <= +endOfDay
+      e.child === req.query.child 
+      // &&
+      // e.timestamp >= +startOfDay &&
+      // e.timestamp <= +endOfDay
     );
   });
 
