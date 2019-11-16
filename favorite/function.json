@@ -1,0 +1,35 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["put"]
+    },
+    {
+      "name": "existingEntry",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "ipk-hack",
+      "collectionName": "timelineEntry",
+      "Id": "{Query.id}",
+      "PartitionKey": "{Query.child}",
+      "connectionStringSetting": "cosmosConnection"
+    },
+    {
+      "name": "entry",
+      "type": "cosmosDB",
+      "direction": "out",
+      "databaseName": "ipk-hack",
+      "collectionName": "timelineEntry",
+      "createIfNotExists": true,
+      "connectionStringSetting": "cosmosConnection"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
